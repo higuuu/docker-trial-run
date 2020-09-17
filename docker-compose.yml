@@ -1,0 +1,16 @@
+version: '3'
+services:
+  python3:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: 'python3'
+    working_dir: '/root/'
+    tty: true
+    volumes:
+      - ./tmp:/root/tmp
+    extra_hosts:
+      - "higuz:162.242.195.82"
+    ports:
+      - 3306:3306
