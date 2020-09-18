@@ -11,7 +11,6 @@ RUN apk --update-cache \
     openblas-dev \
     python3 \
     python3-dev \
-    && python3 get-pip.py \
     freetype-dev
     
 RUN pip3 install --upgrade pip setuptools
@@ -20,6 +19,7 @@ RUN pip3 install --upgrade pip setuptools
 
 # pythonのパッケージをインストール
 COPY requirements.txt /tmp/
+RUN pip install numpy
 RUN pip install --requirement /tmp/requirements.txt
 COPY . /tmp/
 
